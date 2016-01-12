@@ -124,6 +124,17 @@ void newRoom() {
 	}
 	theEnemies.addEnemy(pTheMap, "GRUNT", x, y);
 	}
+	//setup STALKERS
+	for (int i = 0; i != level / 5 ; i++) {
+		x = rand() % theMap.getMax();
+		y = rand() % theMap.getMax();
+
+		while (theMap.getElement(x, y) != ' ') {
+			x = rand() % theMap.getMax();
+			y = rand() % theMap.getMax();
+		}
+		theEnemies.addEnemy(pTheMap, "STALKER", x, y);
+	}
 
 	//setup ITEM
 	if (int r = rand() % 10 + 1 == 1) {
@@ -189,7 +200,10 @@ void gameLoop() {
 		for (int y = 0; y != theMap.getMax(); y++) {
 			if (theEnemies.isEnemy(pTheMap, x, y)) {
 				if (theMap.getElement(x, y) == 'm') {
-					theEnemies.moveEnemy(pTheMap, "GRUNT", x, y);
+					theEnemies.moveEnemy(pTheMap, thePlayer.getPlayerLocation(), "GRUNT", x, y);
+				}
+				else if (theMap.getElement(x, y) == 'M') {
+					theEnemies.moveEnemy(pTheMap, thePlayer.getPlayerLocation(), "STALKER", x, y);
 				}
 			}
 		}
@@ -200,6 +214,9 @@ void gameLoop() {
 		for (int a = 0; a < theMap.getMax(); a++) {
 			if (theMap.getElement(i, a) == 'n') {
 				theMap.insertElement('m', i, a);
+			}
+			if (theMap.getElement(i, a) == 'N') {
+				theMap.insertElement('M', i, a);
 			}
 		}
 	}

@@ -1,2 +1,6 @@
-﻿  map.cpp
+﻿  main.cpp
+  enemies.cpp
+  Generating Code...
+c:\users\peraldon\documents\visual studio 2015\projects\intothedepths\intothedepths\enemies.cpp(164): warning C4715: 'enemies::getIcon': not all control paths return a value
+c:\users\peraldon\documents\visual studio 2015\projects\intothedepths\intothedepths\enemies.cpp(173): warning C4715: 'enemies::getIconNew': not all control paths return a value
   IntoTheDepths.vcxproj -> C:\Users\peraldon\Documents\Visual Studio 2015\Projects\IntoTheDepths\Debug\IntoTheDepths.exe
